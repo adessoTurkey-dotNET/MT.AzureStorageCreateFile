@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33626.354
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MT.AzureStorageLib", "MT.AzureStorageLib\MT.AzureStorageLib.csproj", "{0DFB1F35-97F6-474F-9410-E9FA3BE95886}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MT.WebApp", "MT.WebApp\MT.WebApp.csproj", "{EDA1966D-9EC4-4297-BC71-F88A93A76753}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MT.AzureProcessFunction", "MT.AzureProcessFunction\MT.AzureProcessFunction.csproj", "{DE27A981-EB68-48F6-B572-4E041E349425}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{849B40AA-B732-4BDF-8EE4-2E18B96A6C9A}"
+	ProjectSection(SolutionItems) = preProject
+		ReadMe.txt = ReadMe.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0DFB1F35-97F6-474F-9410-E9FA3BE95886}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DFB1F35-97F6-474F-9410-E9FA3BE95886}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DFB1F35-97F6-474F-9410-E9FA3BE95886}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DFB1F35-97F6-474F-9410-E9FA3BE95886}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDA1966D-9EC4-4297-BC71-F88A93A76753}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDA1966D-9EC4-4297-BC71-F88A93A76753}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDA1966D-9EC4-4297-BC71-F88A93A76753}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDA1966D-9EC4-4297-BC71-F88A93A76753}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE27A981-EB68-48F6-B572-4E041E349425}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE27A981-EB68-48F6-B572-4E041E349425}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE27A981-EB68-48F6-B572-4E041E349425}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE27A981-EB68-48F6-B572-4E041E349425}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DCF2F7E5-F418-4ADA-810A-1818E1FA63B6}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,29 @@
+﻿﻿@{
+    ViewData["Title"] = "Index";
+}
+
+
+<h2>Files</h2>
+<table class="table table-bordered">
+    <tr>
+        <th> </th>
+        <th>Name</th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var item in ViewBag.blobs as List<FileBlob>)
+    {
+        <tr>
+            <td>
+                <img src=@item.Url class="img-thumbnail" style="width:100px;" />
+            </td>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-action="Download" asp-route-fileName="@item.Name">Download</a>
+                <a class="btn btn-danger" asp-action="Delete" asp-route-fileName="@item.Name">Delete</a>
+            </td>
+        </tr>
+    }
+</table>

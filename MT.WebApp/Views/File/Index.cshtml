@@ -1,0 +1,96 @@
+﻿@model MT.AzureStorageLib.Entities.Person
+
+@{
+    ViewData["Title"] = "Index";
+}
+@section Scripts
+    {
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+    <script type="text/javascript">
+        var ConnId="";
+        $(document).ready(() => {
+            var connection = new signalR.HubConnectionBuilder().withUrl("/NotificationHub").build();
+
+            connection.start().then(() => {
+                
+                console.log("Hub Connection Id:" + connection.connectionId)
+                ConnId = connection.connectionId;
+            });
+
+
+         
+            connection.on("NotifyCompleteCreatingProcess", () => {
+
+                $("#status").html(`Your Files are being creating.  <br/>  <a  href="/blobs">   Click to see your created files.</a>`);
+
+            })
+
+
+        } )
+        function SendToQueue(userId,city) {
+            console.log(`${userId} ${city} merveeeee`);
+            
+            let userContactFileQueue = {
+                "UserId": userId, "City": city, "ConnectionId": ConnId
+            };
+            console.log(`${userContactFileQueue.City} ${userContactFileQueue.ConnectionId} artı `);
+            $.post("/File/SendPersonToQueue", userContactFileQueue, (data) => {
+                console.log(`${data}`);
+                $("#status").text(data);
+            })
+        }
+    </script>
+
+}
+
+<div class="row">
+    <div class="col-md-8  offset-md-2">
+
+    </hr>
+        <h2 id="status"></h2>
+        <h2>Persons</h2>
+        <table class="table table-bordered">
+            <tr>
+                <th>User Id</th>
+                <th>City</th>
+                <th>Name</th>
+                <th>Phone Numbers</th>
+                <th>Actions</th>
+                
+            </tr>
+
+            @foreach (var item in ViewBag.people as List<MT.AzureStorageLib.Entities.Person>)
+            {
+                <tr>
+                    <td>@item.RowKey</td>
+                    <td>@item.PartitionKey</td>
+                    <td>@item.Name   </td> 
+                    <td>
+                        @if (item.PhoneNumber!=null)
+                        {
+                            @Html.Raw(string.Join(" ", item.PhoneNumber))
+                        }
+                    </td>
+
+                    <td>
+                        <div>
+
+                            <button class=" btn btn-warning ml-1" id="CreateFile" onclick='SendToQueue("@item.RowKey","@item.PartitionKey")'>CreateFile</button>
+                        </div>
+                        
+                        <div>
+                            <form class="form-inline mb-2" method="post" asp-controller="File" asp-action="AddNumberToPerson">
+                                <input type="text" name="phoneNumbers" id="myInput">
+                                <input type="hidden" name="userId" value="@item.RowKey" />
+                                <input type="hidden" name="city" value="@item.PartitionKey" />
+                                <input class=" btn btn-primary mt-2 mb-2" type="submit" value="Add Number" />
+                            </form>
+                        </div>
+                    </td>
+                   
+                </tr>
+
+            }
+        </table>
+    </div>
+
